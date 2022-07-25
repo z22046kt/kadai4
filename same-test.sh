@@ -10,15 +10,10 @@ echo "input natural number" > $tmp-nat # エラー：引数が数字以外を指
 ERROR_EXIT () {
   echo "$1" >&2
   rm -f $tmp-*
-  exit 1 エラー終了
+  exit 1
 }
 
 # テスト開始
 # teat1: 引数の数が⾜りない
 ./same.sh 2> $tmp-ans
-#diff $tmp-ans $tmp-args > /dev/null 2>&1
-#if [ $? -eq 0 ]; then
-#  ERROR_EXIT "error in test1"
-#fi
-
 diff $tmp-ans $tmp-args && ERROR_EXIT "error in test1"
