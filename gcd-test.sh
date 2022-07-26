@@ -47,6 +47,10 @@ diff $tmp-ans $tmp-nat || ERROR_EXIT "ERROR:引数が数字以外を指定され
 ./gcd.sh 1 A 2> $tmp-ans
 diff $tmp-ans $tmp-nat || ERROR_EXIT "ERROR:引数が数字以外を指定されている。英字（2つ目が正しくない）。"
 
+# 英字（両方が正しくない）
+./gcd.sh A A 2> $tmp-ans
+diff $tmp-ans $tmp-nat || ERROR_EXIT "ERROR:引数が数字以外を指定されている。英字（両方が正しくない）。"
+
 # ------------------------------------
 # 小数（1つ目が正しくない）
 ./gcd.sh 1.1 1 2> $tmp-ans
@@ -55,6 +59,10 @@ diff $tmp-ans $tmp-nat || ERROR_EXIT "ERROR:引数が数字以外を指定され
 # 小数（2つ目が正しくない）
 ./gcd.sh 1 2.1 2> $tmp-ans
 diff $tmp-ans $tmp-nat || ERROR_EXIT "ERROR:引数が数字以外を指定されている。小数（2つ目が正しくない）。"
+
+# 小数（両方が正しくない）
+./gcd.sh 1.11 2.1 2> $tmp-ans
+diff $tmp-ans $tmp-nat || ERROR_EXIT "ERROR:引数が数字以外を指定されている。小数（両方が正しくない）。"
 
 # ------------------------------------
 # 0（1つ目が正しくない）
@@ -65,8 +73,31 @@ diff $tmp-ans $tmp-nat || ERROR_EXIT "ERROR:引数が数字以外を指定され
 ./gcd.sh 1 0 2> $tmp-ans
 diff $tmp-ans $tmp-nat || ERROR_EXIT "ERROR:引数が数字以外を指定されている。0（2つ目が正しくない）。"
 
+# 0（両方が正しくない）
+./gcd.sh 0 0 2> $tmp-ans
+diff $tmp-ans $tmp-nat || ERROR_EXIT "ERROR:引数が数字以外を指定されている。0（両方が正しくない）。"
+
 # ------------------------------------
-# teat3: 正常終了
+# teat3: 混合
+# ------------------------------------
+# １つ指定（英字）
+./gcd.sh X 2> $tmp-ans
+diff $tmp-ans $tmp-args || ERROR_EXIT "ERROR:引数の数が正しくない。指定１つ指定（英字）。"
+
+# 英字と小数点（両方が正しくない）
+./gcd.sh A 1.2 2> $tmp-ans
+diff $tmp-ans $tmp-nat || ERROR_EXIT "ERROR:引数が数字以外を指定されている。英字と小数点（両方が正しくない）。"
+
+# 英字と0（両方が正しくない）
+./gcd.sh A 0 2> $tmp-ans
+diff $tmp-ans $tmp-nat || ERROR_EXIT "ERROR:引数が数字以外を指定されている。英字と0（両方が正しくない）。"
+
+# 小数点と0（両方が正しくない）
+./gcd.sh A 0 2> $tmp-ans
+diff $tmp-ans $tmp-nat || ERROR_EXIT "ERROR:引数が数字以外を指定されている。小数点と0（両方が正しくない）。"
+
+# ------------------------------------
+# teat4: 正常終了
 # ------------------------------------
 
 # 最小
