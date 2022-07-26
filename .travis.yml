@@ -2,4 +2,4 @@ language: bash
 script:
   - echo "hello gcd"
   - echo Travis CI test in .travis.yml
-  - gcd-test.sh
+  - ./gcd-test.sh
