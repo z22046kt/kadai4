@@ -104,49 +104,40 @@ diff $tmp-ans $tmp-nat || ERROR_EXIT "ERROR:引数が数字以外を指定され
 ./gcd.sh 1 1 1> $tmp-ans
 if [ $? -ne 0 ]; then
   ERROR_EXIT "ERROR:予期せぬエラー。正常終了していない。"
-  exit 1
 fi
 r=`cat $tmp-ans`
 if [ $r -ne 1 ]; then
   ERROR_EXIT "ERROR:予期せぬエラー。結果が違う。"
-  exit 1
 fi
 
 # 一般（値が同じ）
 ./gcd.sh 20 20 1> $tmp-ans
 if [ $? -ne 0 ]; then
   ERROR_EXIT "ERROR:予期せぬエラー。正常終了していない。"
-  exit 1
 fi
 r=`cat $tmp-ans`
 if [ $r -ne 20 ]; then
   ERROR_EXIT "ERROR:予期せぬエラー。結果が違う。"
-  exit 1
 fi
 
 # 一般（1つ目が大きい）
 ./gcd.sh 100 10 1> $tmp-ans
 if [ $? -ne 0 ]; then
   ERROR_EXIT "ERROR:予期せぬエラー。正常終了していない。"
-  exit 1
 fi
 r=`cat $tmp-ans`
 if [ $r -ne 10 ]; then
   ERROR_EXIT "ERROR:予期せぬエラー。結果が違う。"
-  exit 1
 fi
 
 # 一般（2つ目が大きい）
 ./gcd.sh 10 100 1> $tmp-ans
 if [ $? -ne 0 ]; then
   ERROR_EXIT "ERROR:予期せぬエラー。正常終了していない。"
-  exit 1
 fi
 r=`cat $tmp-ans`
 if [ $r -ne 10 ]; then
   ERROR_EXIT "ERROR:予期せぬエラー。結果が違う。"
-  exit 1
 fi
-
 
 REMOVE_TMP

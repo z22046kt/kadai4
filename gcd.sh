@@ -8,7 +8,6 @@ fi
 
 # 引数の型の確認。exprに数字以外を渡すと終了ステータスが2以上になるのでエラー。
 expr $1 + $2 > /dev/null 2>&1
-
 if [ $? -ge 2 ]; then
   echo "input natural number" 1>&2
   exit 1
